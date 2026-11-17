@@ -1,0 +1,41 @@
+# Phase 1 CI gate for the Supabase schema (IMPLEMENTATION_PLAN.md Part B, item 9).
+# Runs entirely against a throwaway local Postgres; no project keys are used.
+name: Database
+
+on:
+  pull_request:
+    paths: ["supabase/**", ".github/workflows/database.yml"]
+  push:
+    branches: [dev, prod]
+    paths: ["supabase/**", ".github/workflows/database.yml"]
+
+permissions:
+  contents: read
+
+jobs:
+  database:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: supabase/setup-cli@v1
+        with:
+          version: 2.107.0
+
+      - name: Start Postgres and apply migrations + seed
+        run: supabase db start
+
+      - name: Lint functions (plpgsql_check)
+        run: supabase db lint --local --schema public,private --fail-on error
+
+      - name: pgTAP tests (RLS, bookings, reviews, admin)
+        run: supabase test db
+
+      - name: Security advisor
+        run: supabase db advisors --local --type security --fail-on warn
+
+      - name: Generated types are up to date
+        run: |
+          supabase gen types typescript --local --schema public > "$RUNNER_TEMP/database.types.ts"
+          diff -u supabase/types/database.types.ts "$RUNNER_TEMP/database.types.ts"
