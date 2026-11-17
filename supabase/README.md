@@ -41,6 +41,6 @@ Seed accounts use the password `VenyDev2026` and exist **only on the local stack
 
 ## Remote projects
 
-- The existing project is **staging**. Nothing has been applied to it yet. Linking it and running `supabase db push` needs the product owner's approval.
+- The existing project is **staging** and is linked. Migrations up to `20261117000400` were applied on 2026-11-17. Future pushes still need the product owner's approval. Branch `dev` maps to staging, and `prod` will map to the production project.
 - Keys and the database password are never committed or pasted into chat. Run `supabase login` and `supabase link` yourself.
 - The first admin on a remote project is created with a one-off SQL insert into `public.admin_users`, run by the product owner (PD-14). There is no UI or API path that grants admin rights.

@@ -129,7 +129,7 @@ Conventions for execution:
 - [ ] Fix the `errorHandler` status mapping.
 
 ## Phase 1 — Supabase foundation
-1. [~] The existing Supabase project is **staging** (confirmed 2026-11-17). Supabase CLI 2.107.0 is installed locally and pinned in CI. Still open: linking and applying the migrations to staging (🔐 needs approval). 🔐 Create the other environment's project; production goes on the Pro plan (PD-11). 🔐 Install the Supabase CLI locally and in CI. Keys live only in git-ignored env files and in the Vercel and Supabase settings, never in docs or commits.
+1. [~] The existing Supabase project is **staging** (confirmed 2026-11-17). Supabase CLI 2.107.0 is installed locally and pinned in CI. Staging is linked and the Phase 1 migrations were **applied on 2026-11-17**. Git branches: `dev` → staging, `prod` → production (project not created yet). 🔐 Create the other environment's project; production goes on the Pro plan (PD-11). 🔐 Install the Supabase CLI locally and in CI. Keys live only in git-ignored env files and in the Vercel and Supabase settings, never in docs or commits.
 2. [x] `supabase init` (local ports moved to 553xx, to avoid clashing with another local project); enable the `postgis` (and optionally `pg_cron`, `pgmq`) extensions in the first migration.
 3. [x] Migration `20261117000100_schema.sql`: the enums and tables in DATABASE_ARCHITECTURE Part B §3–4, with constraints and indexes.
 4. [x] Migration `20261117000200_functions.sql` (plus `get_my_vendor` and the `admin_*` RPCs): `handle_new_user`, `guard_profile_role`, `set_updated_at`, `create_booking`, `transition_booking`, `create_review`, `recalc_service_rating`, `search_services`, `soft_delete_service`, `get_booking_contact`, `mark_notifications_read`, `generate_slug`.

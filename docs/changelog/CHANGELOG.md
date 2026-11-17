@@ -4,6 +4,12 @@ This file follows the [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) f
 
 ## [Unreleased]
 
+### Changed — 2026-11-17 (staging)
+- Git branches: `dev` (work, deploys to the **staging** Supabase project) and `prod` (created at `d6f8147`; it will deploy to a separate production project once that exists). `dev` is promoted to `prod` by a PR after testing. CI runs on both branches.
+- **Applied migrations `20261117000100`–`20261117000400` to the staging Supabase project** (`supabase db push`, approved by the product owner). The seed was not pushed.
+- Hosted Security Advisor: 9 × WARN `authenticated_security_definer_function_executable`, for the intended RPCs (`create_booking`, `transition_booking`, `create_review`, `soft_delete_service`, `get_booking_contact`, `get_my_vendor` and the 3 `admin_*` functions). These are **accepted by design**: each one checks `auth.uid()` (and `is_admin()` for the admin RPCs) and none is executable by `anon`. 1 × INFO `rls_enabled_no_policy` on `admin_users`, which is intentional. Performance: 7 × WARN for multiple permissive policies (separate admin policies, kept for auditability).
+- Types generated from staging match the local schema. The only differences are generator formatting and metadata.
+
 ### Added — 2026-11-17 (Phase 1: Supabase foundation, local only)
 - Decisions: PD-04 = yes (vendor self-selection). The existing Supabase project is **staging**.
 - `supabase/` initialized with Supabase CLI 2.107.0. Local ports moved to 553xx because another local project uses the defaults.
