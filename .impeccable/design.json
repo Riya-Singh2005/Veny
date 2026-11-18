@@ -1,0 +1,473 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-18T18:38:43.768Z",
+  "title": "Design System: Veny",
+  "extensions": {
+    "colorMeta": {
+      "ink-lacquer": {
+        "role": "neutral",
+        "displayName": "Ink Lacquer",
+        "canonical": "oklch(15.8% 0.030 296.0)",
+        "tonalRamp": [
+          "oklch(15% 0.030 296.0)",
+          "oklch(25% 0.030 296.0)",
+          "oklch(35% 0.030 296.0)",
+          "oklch(48% 0.030 296.0)",
+          "oklch(60% 0.030 296.0)",
+          "oklch(72% 0.030 296.0)",
+          "oklch(84% 0.029 296.0)",
+          "oklch(95% 0.026 296.0)"
+        ]
+      },
+      "lacquer-panel": {
+        "role": "neutral",
+        "displayName": "Lacquer Panel",
+        "canonical": "oklch(19.3% 0.042 295.4)",
+        "tonalRamp": [
+          "oklch(15% 0.042 295.4)",
+          "oklch(25% 0.042 295.4)",
+          "oklch(35% 0.042 295.4)",
+          "oklch(48% 0.042 295.4)",
+          "oklch(60% 0.042 295.4)",
+          "oklch(72% 0.040 295.4)",
+          "oklch(84% 0.035 295.4)",
+          "oklch(95% 0.030 295.4)"
+        ]
+      },
+      "lacquer-raised": {
+        "role": "neutral",
+        "displayName": "Raised Lacquer",
+        "canonical": "oklch(23.2% 0.050 294.6)",
+        "tonalRamp": [
+          "oklch(15% 0.050 294.6)",
+          "oklch(25% 0.050 294.6)",
+          "oklch(35% 0.050 294.6)",
+          "oklch(48% 0.050 294.6)",
+          "oklch(60% 0.050 294.6)",
+          "oklch(72% 0.045 294.6)",
+          "oklch(84% 0.039 294.6)",
+          "oklch(95% 0.034 294.6)"
+        ]
+      },
+      "ivory": {
+        "role": "neutral",
+        "displayName": "Ivory",
+        "canonical": "oklch(94.5% 0.016 82.8)",
+        "tonalRamp": [
+          "oklch(15% 0.016 82.8)",
+          "oklch(25% 0.016 82.8)",
+          "oklch(35% 0.016 82.8)",
+          "oklch(48% 0.016 82.8)",
+          "oklch(60% 0.016 82.8)",
+          "oklch(72% 0.016 82.8)",
+          "oklch(84% 0.016 82.8)",
+          "oklch(95% 0.016 82.8)"
+        ]
+      },
+      "muted-mauve": {
+        "role": "neutral",
+        "displayName": "Muted Mauve",
+        "canonical": "oklch(76.8% 0.031 305.0)",
+        "tonalRamp": [
+          "oklch(15% 0.031 305.0)",
+          "oklch(25% 0.031 305.0)",
+          "oklch(35% 0.031 305.0)",
+          "oklch(48% 0.031 305.0)",
+          "oklch(60% 0.031 305.0)",
+          "oklch(72% 0.031 305.0)",
+          "oklch(84% 0.031 305.0)",
+          "oklch(95% 0.031 305.0)"
+        ]
+      },
+      "subtle-mauve": {
+        "role": "neutral",
+        "displayName": "Subtle Mauve",
+        "canonical": "oklch(63.4% 0.032 302.8)",
+        "tonalRamp": [
+          "oklch(15% 0.032 302.8)",
+          "oklch(25% 0.032 302.8)",
+          "oklch(35% 0.032 302.8)",
+          "oklch(48% 0.032 302.8)",
+          "oklch(60% 0.032 302.8)",
+          "oklch(72% 0.032 302.8)",
+          "oklch(84% 0.032 302.8)",
+          "oklch(95% 0.032 302.8)"
+        ]
+      },
+      "violet-seam": {
+        "role": "neutral",
+        "displayName": "Violet Seam",
+        "canonical": "oklch(27.4% 0.057 295.8)",
+        "tonalRamp": [
+          "oklch(15% 0.057 295.8)",
+          "oklch(25% 0.057 295.8)",
+          "oklch(35% 0.057 295.8)",
+          "oklch(48% 0.057 295.8)",
+          "oklch(60% 0.057 295.8)",
+          "oklch(72% 0.051 295.8)",
+          "oklch(84% 0.045 295.8)",
+          "oklch(95% 0.038 295.8)"
+        ]
+      },
+      "brass": {
+        "role": "secondary",
+        "displayName": "Gilt Brass",
+        "canonical": "oklch(74.7% 0.089 82.4)",
+        "tonalRamp": [
+          "oklch(15% 0.056 82.4)",
+          "oklch(25% 0.065 82.4)",
+          "oklch(35% 0.074 82.4)",
+          "oklch(48% 0.085 82.4)",
+          "oklch(60% 0.089 82.4)",
+          "oklch(72% 0.089 82.4)",
+          "oklch(84% 0.089 82.4)",
+          "oklch(95% 0.089 82.4)"
+        ]
+      },
+      "brass-line": {
+        "role": "secondary",
+        "displayName": "Brass Seam",
+        "canonical": "oklch(43.3% 0.046 80.1)",
+        "tonalRamp": [
+          "oklch(15% 0.046 80.1)",
+          "oklch(25% 0.046 80.1)",
+          "oklch(35% 0.046 80.1)",
+          "oklch(48% 0.046 80.1)",
+          "oklch(60% 0.046 80.1)",
+          "oklch(72% 0.046 80.1)",
+          "oklch(84% 0.046 80.1)",
+          "oklch(95% 0.042 80.1)"
+        ]
+      },
+      "amethyst": {
+        "role": "primary",
+        "displayName": "Amethyst",
+        "canonical": "oklch(55.4% 0.205 289.3)",
+        "tonalRamp": [
+          "oklch(15% 0.142 289.3)",
+          "oklch(25% 0.163 289.3)",
+          "oklch(35% 0.183 289.3)",
+          "oklch(48% 0.205 289.3)",
+          "oklch(60% 0.205 289.3)",
+          "oklch(72% 0.191 289.3)",
+          "oklch(84% 0.167 289.3)",
+          "oklch(95% 0.144 289.3)"
+        ]
+      },
+      "amethyst-hover": {
+        "role": "primary",
+        "displayName": "Amethyst Deep",
+        "canonical": "oklch(50.6% 0.203 287.8)",
+        "tonalRamp": [
+          "oklch(15% 0.150 287.8)",
+          "oklch(25% 0.171 287.8)",
+          "oklch(35% 0.191 287.8)",
+          "oklch(48% 0.203 287.8)",
+          "oklch(60% 0.203 287.8)",
+          "oklch(72% 0.179 287.8)",
+          "oklch(84% 0.155 287.8)",
+          "oklch(95% 0.133 287.8)"
+        ]
+      },
+      "lilac-ring": {
+        "role": "tertiary",
+        "displayName": "Lilac Ring",
+        "canonical": "oklch(70.9% 0.151 294.5)",
+        "tonalRamp": [
+          "oklch(15% 0.087 294.5)",
+          "oklch(25% 0.102 294.5)",
+          "oklch(35% 0.117 294.5)",
+          "oklch(48% 0.137 294.5)",
+          "oklch(60% 0.151 294.5)",
+          "oklch(72% 0.151 294.5)",
+          "oklch(84% 0.151 294.5)",
+          "oklch(95% 0.135 294.5)"
+        ]
+      },
+      "sea-green": {
+        "role": "tertiary",
+        "displayName": "Sea Green",
+        "canonical": "oklch(75.1% 0.085 182.0)",
+        "tonalRamp": [
+          "oklch(15% 0.054 182.0)",
+          "oklch(25% 0.062 182.0)",
+          "oklch(35% 0.071 182.0)",
+          "oklch(48% 0.082 182.0)",
+          "oklch(60% 0.085 182.0)",
+          "oklch(72% 0.085 182.0)",
+          "oklch(84% 0.085 182.0)",
+          "oklch(95% 0.085 182.0)"
+        ]
+      },
+      "marigold": {
+        "role": "tertiary",
+        "displayName": "Marigold",
+        "canonical": "oklch(78.5% 0.131 81.7)",
+        "tonalRamp": [
+          "oklch(15% 0.068 81.7)",
+          "oklch(25% 0.081 81.7)",
+          "oklch(35% 0.094 81.7)",
+          "oklch(48% 0.111 81.7)",
+          "oklch(60% 0.127 81.7)",
+          "oklch(72% 0.131 81.7)",
+          "oklch(84% 0.131 81.7)",
+          "oklch(95% 0.129 81.7)"
+        ]
+      },
+      "coral": {
+        "role": "tertiary",
+        "displayName": "Coral",
+        "canonical": "oklch(69.9% 0.139 27.6)",
+        "tonalRamp": [
+          "oklch(15% 0.083 27.6)",
+          "oklch(25% 0.097 27.6)",
+          "oklch(35% 0.111 27.6)",
+          "oklch(48% 0.129 27.6)",
+          "oklch(60% 0.139 27.6)",
+          "oklch(72% 0.139 27.6)",
+          "oklch(84% 0.139 27.6)",
+          "oklch(95% 0.125 27.6)"
+        ]
+      },
+      "brick": {
+        "role": "tertiary",
+        "displayName": "Brick",
+        "canonical": "oklch(54.6% 0.153 28.1)",
+        "tonalRamp": [
+          "oklch(15% 0.113 28.1)",
+          "oklch(25% 0.128 28.1)",
+          "oklch(35% 0.143 28.1)",
+          "oklch(48% 0.153 28.1)",
+          "oklch(60% 0.153 28.1)",
+          "oklch(72% 0.147 28.1)",
+          "oklch(84% 0.128 28.1)",
+          "oklch(95% 0.111 28.1)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Home hero headline only; 76px desktop, 60px tablet, 44px mobile."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Page titles and section headings; 36px on mobile."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Pro names, prices, dialog titles, category names, dashboard times (24 to 30px)."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Controls at 15px; ledes and descriptions at 18px muted, 52 to 65ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Field and slot labels, the verified seal; badges at 12px. Sentence case."
+      }
+    },
+    "shadows": [
+      {
+        "name": "modal-ambient",
+        "value": "0 24px 64px -24px rgb(8 5 14 / 0.8)",
+        "purpose": "Dialogs over the overlay only. Resting surfaces never cast shadows."
+      },
+      {
+        "name": "selected-inner-seam",
+        "value": "inset 0 0 0 1px var(--brass)",
+        "purpose": "Doubles the brass border of a selected slot chip; a line, not depth."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-deco",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Every state transition."
+      },
+      {
+        "name": "duration-fast",
+        "value": "150ms",
+        "purpose": "Colour and border changes on links, inputs, chips, tabs."
+      },
+      {
+        "name": "duration-base",
+        "value": "200ms",
+        "purpose": "Buttons, dialogs, row state."
+      },
+      {
+        "name": "duration-slow",
+        "value": "250ms",
+        "purpose": "Mobile menu sheet."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "0.01ms",
+        "purpose": "All animation and transition durations collapse under prefers-reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "container",
+        "value": "1440px"
+      },
+      {
+        "name": "dashboard-content",
+        "value": "1216px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one amethyst action in a decision: book, accept, find a pro, sign up.",
+      "html": "<button class=\"ds-btn-primary\">Book 10:30</button>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 20px;border-radius:10px;font-family:'Manrope Variable',ui-sans-serif,system-ui,sans-serif;font-size:0.9375rem;font-weight:600;cursor:pointer;transition:background-color 200ms cubic-bezier(0.22,1,0.36,1),border-color 200ms cubic-bezier(0.22,1,0.36,1),color 200ms cubic-bezier(0.22,1,0.36,1),transform 200ms cubic-bezier(0.22,1,0.36,1);background:var(--primary, #7552e0);color:var(--primary-foreground, #fff);border:0;} .ds-btn-primary:hover{background:var(--primary-hover, #6544cf);} .ds-btn-primary:active{transform:scale(0.98);} .ds-btn-primary:focus-visible{outline:2px solid var(--ring, #a88cf5);outline-offset:2px;}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Raised lacquer with a seam that warms to brass; every non-primary action.",
+      "html": "<button class=\"ds-btn-secondary\">Block time off</button>",
+      "css": ".ds-btn-secondary{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 20px;border-radius:10px;font-family:'Manrope Variable',ui-sans-serif,system-ui,sans-serif;font-size:0.9375rem;font-weight:600;cursor:pointer;transition:background-color 200ms cubic-bezier(0.22,1,0.36,1),border-color 200ms cubic-bezier(0.22,1,0.36,1),color 200ms cubic-bezier(0.22,1,0.36,1),transform 200ms cubic-bezier(0.22,1,0.36,1);background:var(--surface-raised, #1f1832);color:var(--foreground, #f2ece1);border:1px solid var(--border, #2a2140);} .ds-btn-secondary:hover{border-color:var(--brass-line, #5e4e33);} .ds-btn-secondary:active{transform:scale(0.98);} .ds-btn-secondary:focus-visible{outline:2px solid var(--ring, #a88cf5);outline-offset:2px;}"
+    },
+    {
+      "name": "Destructive Button",
+      "kind": "button",
+      "refersTo": "button-destructive",
+      "description": "Outline-only and small, set apart from the primary action; fills brick only on hover.",
+      "html": "<button class=\"ds-btn-destructive\">Decline</button>",
+      "css": ".ds-btn-destructive{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 20px;border-radius:10px;font-family:'Manrope Variable',ui-sans-serif,system-ui,sans-serif;font-size:0.9375rem;font-weight:600;cursor:pointer;transition:background-color 200ms cubic-bezier(0.22,1,0.36,1),border-color 200ms cubic-bezier(0.22,1,0.36,1),color 200ms cubic-bezier(0.22,1,0.36,1),transform 200ms cubic-bezier(0.22,1,0.36,1);height:36px;padding:0 12px;font-size:0.875rem;background:transparent;color:var(--destructive, #e8796d);border:1px solid color-mix(in srgb, var(--destructive, #e8796d) 60%, transparent);} .ds-btn-destructive:hover{background:var(--destructive-strong, #b9443a);border-color:var(--destructive-strong, #b9443a);color:#fff;} .ds-btn-destructive:focus-visible{outline:2px solid var(--ring, #a88cf5);outline-offset:2px;}"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "44px lacquer field; seam border warms on hover, lilac ring on focus.",
+      "html": "<input class=\"ds-input\" placeholder=\"Home, 12th Main, HAL 2nd Stage\" />",
+      "css": ".ds-input{width:280px;height:44px;padding:0 14px;border-radius:10px;border:1px solid var(--border, #2a2140);background:var(--surface, #161025);color:var(--foreground, #f2ece1);font-family:'Manrope Variable',ui-sans-serif,system-ui,sans-serif;font-size:0.9375rem;transition:border-color 150ms cubic-bezier(0.22,1,0.36,1),box-shadow 150ms cubic-bezier(0.22,1,0.36,1);} .ds-input::placeholder{color:var(--subtle-foreground, #8e869b);} .ds-input:hover{border-color:var(--brass-line, #5e4e33);} .ds-input:focus-visible{outline:none;border-color:var(--ring, #a88cf5);box-shadow:0 0 0 2px color-mix(in srgb, var(--ring, #a88cf5) 40%, transparent);}"
+    },
+    {
+      "name": "Status Badges",
+      "kind": "chip",
+      "refersTo": "badge-success",
+      "description": "Full-round tone badges for booking status; the brass tone is outline-only.",
+      "html": "<span class=\"ds-badge ds-badge-warn\">Awaiting pro</span> <span class=\"ds-badge ds-badge-brass\">In progress</span> <span class=\"ds-badge ds-badge-ok\">Completed</span>",
+      "css": ".ds-badge{display:inline-flex;align-items:center;padding:2px 10px;border-radius:9999px;font-family:'Manrope Variable',ui-sans-serif,system-ui,sans-serif;font-size:0.75rem;font-weight:600;} .ds-badge-warn{background:var(--warning-soft, #33280f);color:var(--warning, #e3b04b);} .ds-badge-brass{border:1px solid var(--brass-line, #5e4e33);color:var(--brass, #c9a86a);} .ds-badge-ok{background:var(--success-soft, #16302d);color:var(--success, #6cc0b2);}"
+    },
+    {
+      "name": "Header Navigation",
+      "kind": "nav",
+      "refersTo": "",
+      "description": "Sticky ink header under a brass hairline: Deco-mark wordmark, muted links, primary sign-up.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-nav-logo\" href=\"#\"><span class=\"ds-nav-mark\"></span>VENY</a><nav class=\"ds-nav-links\"><a href=\"#\" aria-current=\"page\">Services</a><a href=\"#\">How verification works</a><a href=\"#\">Become a pro</a></nav><a class=\"ds-nav-cta\" href=\"#\">Sign up</a></header>",
+      "css": ".ds-nav{display:flex;align-items:center;gap:40px;height:72px;padding:0 32px;background:var(--background, #0e0a18);border-bottom:1px solid var(--brass-line, #5e4e33);font-family:'Manrope Variable',ui-sans-serif,system-ui,sans-serif;} .ds-nav-logo{display:inline-flex;align-items:center;gap:12px;color:var(--foreground, #f2ece1);text-decoration:none;font-family:'Bodoni Moda Variable','Bodoni 72',Didot,serif;font-size:1.65rem;font-weight:500;letter-spacing:0.18em;} .ds-nav-mark{width:24px;height:24px;background:var(--brass, #c9a86a);clip-path:polygon(30% 0,70% 0,70% 15%,85% 15%,85% 30%,100% 30%,100% 100%,0 100%,0 30%,15% 30%,15% 15%,30% 15%);} .ds-nav-links{display:flex;gap:32px;} .ds-nav-links a{color:var(--muted-foreground, #b8afc4);text-decoration:none;font-size:0.9375rem;font-weight:500;transition:color 150ms cubic-bezier(0.22,1,0.36,1);} .ds-nav-links a:hover,.ds-nav-links a[aria-current]{color:var(--foreground, #f2ece1);} .ds-nav-links a:focus-visible,.ds-nav-cta:focus-visible{outline:2px solid var(--ring, #a88cf5);outline-offset:2px;} .ds-nav-cta{margin-left:auto;display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:10px;background:var(--primary, #7552e0);color:#fff;text-decoration:none;font-weight:600;font-size:0.9375rem;transition:background-color 200ms cubic-bezier(0.22,1,0.36,1);} .ds-nav-cta:hover{background:var(--primary-hover, #6544cf);}"
+    },
+    {
+      "name": "Deco Frame Booking Panel",
+      "kind": "custom",
+      "refersTo": "slot-chip",
+      "description": "Signature: 1.5px gilt-brass stepped shell around the booking panel (price, slot radio chips, primary action). Once per page.",
+      "html": "<div class=\"ds-frame\"><div class=\"ds-frame-core\"><div class=\"ds-price\">&#8377;1,499</div><p class=\"ds-slot-label\">Today, Thu 19 Nov</p><div class=\"ds-slots\" role=\"radiogroup\" aria-label=\"Free times\"><button class=\"ds-slot\" role=\"radio\" aria-checked=\"false\">09:00</button><button class=\"ds-slot\" role=\"radio\" aria-checked=\"true\">10:30</button><button class=\"ds-slot\" role=\"radio\" aria-checked=\"false\" disabled>12:00</button><button class=\"ds-slot\" role=\"radio\" aria-checked=\"false\">15:30</button></div><button class=\"ds-frame-cta\">Book 10:30</button></div></div>",
+      "css": ".ds-frame{--step:12px;width:340px;padding:1.5px;background:var(--brass, #c9a86a);clip-path:polygon(calc(var(--step)*2) 0,calc(100% - var(--step)*2) 0,calc(100% - var(--step)*2) var(--step),calc(100% - var(--step)) var(--step),calc(100% - var(--step)) calc(var(--step)*2),100% calc(var(--step)*2),100% 100%,0 100%,0 calc(var(--step)*2),var(--step) calc(var(--step)*2),var(--step) var(--step),calc(var(--step)*2) var(--step));} .ds-frame-core{clip-path:inherit;background:var(--surface, #161025);padding:36px 24px 24px;color:var(--foreground, #f2ece1);font-family:'Manrope Variable',ui-sans-serif,system-ui,sans-serif;font-feature-settings:'tnum' 1,'lnum' 1;} .ds-price{font-family:'Bodoni Moda Variable','Bodoni 72',Didot,serif;font-size:2.25rem;font-weight:500;line-height:1;} .ds-slot-label{margin:24px 0 12px;font-size:0.8125rem;font-weight:600;color:var(--muted-foreground, #b8afc4);} .ds-slots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;} .ds-slot{height:44px;border-radius:10px;border:1px solid var(--border, #2a2140);background:transparent;color:var(--foreground, #f2ece1);font-family:'Manrope Variable',ui-sans-serif,system-ui,sans-serif;font-size:0.9375rem;font-weight:600;font-variant-numeric:tabular-nums;cursor:pointer;transition:background-color 150ms cubic-bezier(0.22,1,0.36,1),border-color 150ms cubic-bezier(0.22,1,0.36,1);} .ds-slot:hover{border-color:var(--brass-line, #5e4e33);} .ds-slot[aria-checked=true]{border-color:var(--brass, #c9a86a);background:var(--primary-soft, #2a2140);box-shadow:inset 0 0 0 1px var(--brass, #c9a86a);} .ds-slot:disabled{border-color:transparent;color:var(--subtle-foreground, #8e869b);text-decoration:line-through;cursor:not-allowed;} .ds-slot:focus-visible,.ds-frame-cta:focus-visible{outline:2px solid var(--ring, #a88cf5);outline-offset:2px;} .ds-frame-cta{margin-top:24px;width:100%;height:48px;border:0;border-radius:10px;background:var(--primary, #7552e0);color:#fff;font-family:'Manrope Variable',ui-sans-serif,system-ui,sans-serif;font-size:1rem;font-weight:600;cursor:pointer;transition:background-color 200ms cubic-bezier(0.22,1,0.36,1);} .ds-frame-cta:hover{background:var(--primary-hover, #6544cf);}"
+    },
+    {
+      "name": "Service Cover Placeholder",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Honest typographic cover for a service without a photo: italic brass Bodoni initial on raised lacquer, used as a short band.",
+      "html": "<div class=\"ds-cover\" role=\"img\" aria-label=\"Deep cleaning, no photo yet\"><span class=\"ds-cover-initial\">C</span><span class=\"ds-cover-cat\">Cleaning</span></div>",
+      "css": ".ds-cover{width:360px;height:128px;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;border:1px solid var(--brass-line, #5e4e33);border-radius:14px;background:var(--surface-raised, #1f1832);} .ds-cover-initial{font-family:'Bodoni Moda Variable','Bodoni 72',Didot,serif;font-style:italic;font-weight:500;font-size:3rem;line-height:1;color:color-mix(in srgb, var(--brass, #c9a86a) 80%, transparent);} .ds-cover-cat{margin-top:8px;font-family:'Manrope Variable',ui-sans-serif,system-ui,sans-serif;font-size:0.75rem;font-weight:600;color:var(--muted-foreground, #b8afc4);}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Bombay Deco Nights",
+    "overview": "Veny is a Bombay Art Deco foyer at night, built as a working product. The ground is ink-violet lacquer; panels sit one step lighter; every edge is a thin brass seam rather than a shadow. Gilded detail is spent sparingly on the moments that carry trust (the verified seal, the pro's monogram, the price, the stepped frame around the booking panel), and the rest of the surface stays calm and geometric so a household can find a verified pro and book a real slot in a few taps.\n\nThe system is dark-first with a full light counterpart; both pass WCAG AA. Density is moderate: generous section rhythm on public pages, tighter time-ranked rows in the vendor dashboard. A high-contrast Didone carries names, headings and prices; a quiet grotesque with tabular numerals carries every control and every time. Motion is a short ease-out on state change only (150 to 250ms) and collapses under reduced motion.\n\nIt refuses the category default of white rounded photo cards with an icon row, and the legacy app's neon cosmic glow.",
+    "keyCharacteristics": [
+      "Ink-violet lacquer ground with tonal, one-step-raised panels.",
+      "Brass hairline seams in place of shadows.",
+      "Amethyst reserved for the primary action.",
+      "Bodoni Moda display over Manrope UI with tabular numerals.",
+      "One stepped Deco frame per page, around the booking panel.",
+      "Small, consistent radii (6 / 10 / 14px)."
+    ],
+    "rules": [
+      {
+        "name": "The One Jewel Rule",
+        "body": "Amethyst fills only the primary action. If a screen shows two amethyst buttons in the same decision, one of them is wrong.",
+        "section": "colors"
+      },
+      {
+        "name": "The Gilt-as-Line Rule",
+        "body": "Brass is a line, a glyph or a word, never a panel fill. Hairline structure uses Brass Seam; full Gilt Brass is for marks of trust and the signature frame.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two-Theme Rule",
+        "body": "Components use semantic tokens only, never raw hex, so dark and light both resolve and both hold AA contrast.",
+        "section": "colors"
+      },
+      {
+        "name": "The Didone-for-Names Rule",
+        "body": "Names, prices, headings and times shown as content are set in Bodoni Moda; controls, labels and metadata are Manrope. Italic Bodoni in brass is the only typographic ornament (accent words, monograms, step numerals, cover initials).",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Rule",
+        "body": "Numerals are tabular and lining everywhere, so slot times, prices and table columns align.",
+        "section": "typography"
+      },
+      {
+        "name": "The No-Eyebrow Rule",
+        "body": "No small labels above headings. A heading stands on its own; context goes in the lede below it.",
+        "section": "typography"
+      },
+      {
+        "name": "The Seam-Not-Shadow Rule",
+        "body": "Resting surfaces never cast shadows. Separate them with a tonal step or a brass hairline. Only a modal floating over the overlay gets a shadow.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Stepped-Corner Rule",
+        "body": "The ziggurat silhouette belongs to the logo mark and the Deco frame. Do not step-cut buttons, cards or images.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do use amethyst only for the one primary action in a decision.",
+      "Do separate surfaces with a tonal step or a brass hairline (1px brass-line).",
+      "Do put the booking panel (slot picker, price, book action) inside the Deco frame, once per page.",
+      "Do set names, prices, headings and displayed times in Bodoni Moda (500), and controls in Manrope with tabular numerals.",
+      "Do keep destructive actions outline-only and spatially apart from the primary action.",
+      "Do keep motion to 150 / 200 / 250ms with cubic-bezier(0.22, 1, 0.36, 1), on state changes only, and honour reduced motion.",
+      "Do use the 6 / 10 / 14px radii and semantic tokens only, verified in both dark and light themes at WCAG AA.",
+      "Do show the typographic Service Cover as a short band when a service has no photo, and carry the Preview Banner on any screen running sample data.",
+      "Do draw icons as thin outline strokes (1.5 to 1.75) in muted or brass, at 16 to 20px."
+    ],
+    "donts": [
+      "Don't add shadows to resting cards, panels, buttons or the frame; the modal dialog is the only shadowed layer.",
+      "Don't fill a button, chip or panel with amethyst outside the primary action, or fill large areas with brass.",
+      "Don't use the Deco frame or stepped corner more than once per page or on anything but the booking panel and the logo mark.",
+      "Don't place eyebrow or kicker labels above headings.",
+      "Don't use side-stripe accents on cards or rows.",
+      "Don't fabricate trust claims, ratings or photos; use \"New on Veny\", the monogram and the typographic cover instead.",
+      "Don't use em dashes in UI copy.",
+      "Don't return to white rounded photo cards with an icon row, or to neon glow and gradients."
+    ]
+  }
+}

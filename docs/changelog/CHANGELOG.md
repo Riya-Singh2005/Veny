@@ -4,6 +4,41 @@ This file follows the [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) f
 
 ## [Unreleased]
 
+### Added: 2026-11-19 (M2 design system, "Bombay Deco Nights")
+- **Product record:** `PRODUCT.md` at the repo root, from the owner's answers:
+  - audience: urban middle/upper-class metro households;
+  - positioning: verified independent pros;
+  - kept: the name Veny, the purple accent, dark-first UI and "The Elite Marketplace";
+  - marketing-site mood references: two26.studio and Cartier.
+- **Visual direction chosen by the owner:** *Bombay Deco Nights*.
+  - Ink-violet lacquer ground, brass hairline seams (no shadows), amethyst for primary actions only, ivory text.
+  - Bodoni Moda display with Manrope UI. Both fonts are self-hosted via `@fontsource-variable`.
+  - Signature: a stepped Deco frame around the slot picker.
+  - Direction contract: `.impeccable/surfaces/src-app.md`. Decision sketches: `.impeccable/mocks/decision/`.
+- **Tokens:** `src/styles/globals.css`, dark (default) and light, with WCAG AA contrast checked by axe.
+- **Primitives:** `src/components/ui` (button, input/textarea/select, label, badge, skeleton/separator, dialog, tabs) on Radix.
+- **Shared components:** Logo, VerifiedSeal, Rating, PriceTag, StatusBadge, PageHeader, EmptyState, Monogram, ServiceCover (honest no-photo placeholder), SlotPicker (ARIA radio group with arrow keys) and DecoFrame.
+- **Layouts:**
+  - `PublicLayout`: sticky header, mobile menu sheet, skip link, footer;
+  - `DashboardLayout`: sidebar on desktop, bottom tabs on phones.
+- **Home page on live data:**
+  - categories;
+  - newly verified services (`search_services`);
+  - the earliest free slot across verified services over the next 7 days (`get_available_slots`).
+- **Design previews with bannered sample data:** `/design` (style guide with a dark/light toggle), `/design/service` (service detail) and `/design/vendor` (vendor workspace).
+- **Placeholder pages:** `/services`, `/services/:slug`, `/login` and `/signup` honestly say which milestone delivers them.
+- **Tests:**
+  - `src/lib/utils/time.test.ts`;
+  - `tests/e2e/home.spec.ts` (replaces `foundation.spec.ts`);
+  - `tests/e2e/a11y.spec.ts`: axe WCAG 2.2 AA on every screen, desktop and mobile, plus the light theme.
+  - **17 unit and 20 E2E tests pass.**
+- **Design review:** the impeccable finish review ran two rounds. All 8 material fixes were scored resolved, and one follow-up regression (an eyebrow label) was removed.
+- **Removed:** the temporary M1 `FoundationPage`.
+- **Known issues:**
+  - The main JS bundle is 780 kB (229 kB gzipped). Route-level splitting is planned for M3/M4.
+  - The location selector is deferred to M4, because it needs real geolocation.
+  - The logo is an authored CSS/SVG mark. The brandkit board is deferred because no image generation is available.
+
 ### Added — 2026-11-18 (M1 foundation, React + Vite)
 - **Decision ADR-020:** React + Vite + React Router SPA replaces Next.js (ADR-002 superseded). Also decided: PD-02 (verification required), one booking at a time per vendor, a 2 h customer cancellation window, vendor reject, and the app at the repo root.
 - New app at the repo root:

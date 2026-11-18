@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Veny — Category standard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0E0E12;--s1:#17171D;--s2:#202029;--line:#2A2A34;--fg:#FFFFFF;--muted:#A1A1AD;--accent:#7C5CFF}
+*{box-sizing:border-box;margin:0}
+body{width:1440px;height:900px;overflow:hidden;background:var(--bg);color:var(--fg);font:400 15px/1.5 Inter,sans-serif}
+header{height:68px;display:flex;align-items:center;gap:32px;padding:0 80px;border-bottom:1px solid var(--line)}
+.logo{font-weight:700;font-size:24px}
+nav{display:flex;gap:24px;color:var(--muted)}
+.sp{flex:1}
+.btn{height:42px;padding:0 20px;border-radius:10px;border:0;font:600 15px Inter;display:inline-flex;align-items:center}
+.pri{background:var(--accent);color:#fff}
+.ghost{background:none;color:var(--fg)}
+.hero{padding:64px 80px 0;text-align:center}
+h1{font-size:56px;font-weight:700;letter-spacing:-.03em}
+.lede{margin-top:12px;color:var(--muted);font-size:18px}
+.search{margin:32px auto 0;max-width:720px;display:flex;background:var(--s1);border:1px solid var(--line);border-radius:14px;padding:6px}
+.search input{flex:1;background:none;border:0;color:var(--fg);font:500 17px Inter;padding:0 16px}
+.cats{margin:48px 80px 0;display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.cat{background:var(--s1);border:1px solid var(--line);border-radius:16px;padding:20px;text-align:center;font-weight:600}
+.cat i{display:block;width:44px;height:44px;margin:0 auto 12px;border-radius:12px;background:var(--s2)}
+h2{margin:44px 80px 16px;font-size:24px;font-weight:600}
+.grid{margin:0 80px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{background:var(--s1);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.img{height:120px;background:var(--s2)}
+.cb{padding:14px 16px}
+.cb b{display:block;font-size:16px}
+.cb span{color:var(--muted);font-size:14px}
+</style></head><body>
+<header><div class="logo">Veny</div><nav><span>Services</span><span>For pros</span></nav><span class="sp"></span><button class="btn ghost">Log in</button><button class="btn pri">Sign up</button></header>
+<section class="hero"><h1>Home services, done right</h1><p class="lede">The Elite Marketplace. Book verified professionals near you.</p>
+  <div class="search"><input value="Search for a service"><button class="btn pri">Search</button></div></section>
+<div class="cats"><div class="cat"><i></i>Cleaning</div><div class="cat"><i></i>Repair</div><div class="cat"><i></i>Salon</div><div class="cat"><i></i>Electrician</div><div class="cat"><i></i>Plumber</div><div class="cat"><i></i>Cooking</div></div>
+<h2>Popular near you</h2>
+<div class="grid">
+  <div class="card"><div class="img"></div><div class="cb"><b>Deep cleaning</b><span>★ 4.8 · from ₹2,499</span></div></div>
+  <div class="card"><div class="img"></div><div class="cb"><b>Salon at home</b><span>★ 4.9 · from ₹799</span></div></div>
+  <div class="card"><div class="img"></div><div class="cb"><b>Fan repair</b><span>★ 4.9 · from ₹499</span></div></div>
+  <div class="card"><div class="img"></div><div class="cb"><b>Leak repair</b><span>★ 4.7 · from ₹349</span></div></div>
+</div>
+</body></html>

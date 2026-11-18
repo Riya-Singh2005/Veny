@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Veny — Bombay Deco Nights</title>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0E0A18;--ink2:#161025;--ink3:#211934;--ivory:#F2ECE1;--muted:#B8AFC4;--brass:#C9A86A;--brass-dim:#6E5C3C;--amethyst:#7552E0;--amethyst-hi:#A88CF5;--sea:#4F8F86}
+*{box-sizing:border-box;margin:0}
+body{width:1440px;height:900px;overflow:hidden;background:var(--ink);color:var(--ivory);font:500 15px/1.5 Manrope,sans-serif}
+.disp{font-family:"Bodoni Moda",serif;font-optical-sizing:auto}
+header{height:76px;display:flex;align-items:center;gap:40px;padding:0 64px;border-bottom:1px solid var(--brass-dim)}
+.logo{display:flex;align-items:center;gap:12px;font-size:28px;letter-spacing:.18em;font-weight:500}
+.mark{width:26px;height:26px;background:var(--brass);clip-path:polygon(30% 0,70% 0,70% 15%,85% 15%,85% 30%,100% 30%,100% 100%,0 100%,0 30%,15% 30%,15% 15%,30% 15%)}
+nav{display:flex;gap:32px;color:var(--muted);font-size:15px}
+.sp{flex:1}
+.loc{display:flex;align-items:center;gap:8px;padding:9px 16px;border:1px solid var(--ink3);border-radius:999px;color:var(--ivory);font-size:14px}
+.btn{height:44px;padding:0 22px;border-radius:10px;font-weight:600;font-size:15px;display:inline-flex;align-items:center;border:0}
+.btn-ghost{color:var(--ivory);background:none}
+.btn-pri{background:var(--amethyst);color:#fff}
+main{display:grid;grid-template-columns:7fr 5fr;gap:64px;padding:72px 64px 0}
+h1{font-size:76px;line-height:1.02;font-weight:500;letter-spacing:-.02em;max-width:12ch}
+h1 em{font-style:italic;color:var(--brass)}
+.lede{margin-top:24px;font-size:19px;color:var(--muted);max-width:52ch}
+.search{margin-top:40px;display:grid;grid-template-columns:1.3fr 1fr auto;border:1px solid var(--brass-dim);border-radius:14px;background:var(--ink2);max-width:680px}
+.f{padding:14px 20px;border-right:1px solid var(--ink3)}
+.f small{display:block;color:var(--muted);font-size:12px;font-weight:600}
+.f b{font-size:17px;font-weight:600}
+.search .btn{margin:8px;height:auto}
+.trust{margin-top:28px;display:flex;gap:28px;color:var(--muted);font-size:14px}
+.trust span::before{content:"";display:inline-block;width:6px;height:6px;margin-right:10px;background:var(--brass);transform:rotate(45deg) translateY(-2px)}
+/* signature: stepped Deco frame on the slot picker */
+.frame{position:relative;padding:2px;background:var(--brass);clip-path:polygon(24px 0,calc(100% - 24px) 0,calc(100% - 24px) 12px,calc(100% - 12px) 12px,calc(100% - 12px) 24px,100% 24px,100% 100%,0 100%,0 24px,12px 24px,12px 12px,24px 12px)}
+.frame>div{background:var(--ink2);padding:36px 32px 28px;clip-path:inherit}
+.pro{display:flex;gap:16px;align-items:center}
+.av{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#3a2f52,#5b4a7c)}
+.pro h3{font-size:24px;font-weight:500}
+.seal{display:inline-flex;align-items:center;gap:6px;color:var(--brass);font-size:13px;font-weight:700}
+.meta{color:var(--muted);font-size:14px}
+.rule{height:1px;background:var(--ink3);margin:24px 0}
+.lbl{font-size:13px;color:var(--muted);font-weight:600;margin-bottom:12px}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.slot{height:46px;border:1px solid var(--ink3);border-radius:8px;display:grid;place-items:center;font-variant-numeric:tabular-nums;font-weight:600}
+.slot.off{color:#8E869B;text-decoration:line-through}
+.slot.on{border-color:var(--brass);background:#2a2140;box-shadow:inset 0 0 0 1px var(--brass)}
+.book{margin-top:24px;display:flex;justify-content:space-between;align-items:center}
+.price{font-size:30px}
+.cats{position:absolute;left:64px;right:64px;bottom:0;display:grid;grid-template-columns:repeat(6,1fr);border-top:1px solid var(--brass-dim)}
+.cat{padding:22px 20px 26px;border-right:1px solid var(--ink3)}
+.cat:last-child{border-right:0}
+.cat h4{font-size:24px;font-weight:500}
+.cat p{color:var(--muted);font-size:14px}
+</style></head><body>
+<header>
+  <div class="logo disp"><span class="mark"></span>VENY</div>
+  <nav><span>Services</span><span>How verification works</span><span>Become a pro</span></nav>
+  <span class="sp"></span>
+  <span class="loc"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Indiranagar, Bengaluru</span>
+  <button class="btn btn-ghost">Log in</button><button class="btn btn-pri">Sign up</button>
+</header>
+<main>
+  <section>
+    <h1 class="disp">Verified pros for <em>every room</em> of your home.</h1>
+    <p class="lede">The Elite Marketplace. Every professional is checked by our team before you can book them, and you only ever see times they are actually free.</p>
+    <div class="search">
+      <div class="f"><small>Service</small><b>Electrician</b></div>
+      <div class="f"><small>When</small><b>Today, after 4 pm</b></div>
+      <button class="btn btn-pri">Find a pro</button>
+    </div>
+    <div class="trust"><span>ID and documents checked</span><span>Real availability</span><span>Pay the pro on-site</span></div>
+  </section>
+  <aside class="frame"><div>
+    <div class="pro"><div class="av"></div><div>
+      <h3 class="disp">Ravi Kumar</h3>
+      <div class="meta">Electrician · 2.1 km · ★ 4.9 (128)</div>
+      <span class="seal"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>Verified by Veny</span>
+    </div></div>
+    <div class="rule"></div>
+    <div class="lbl">Today, Wed 18 Nov</div>
+    <div class="slots">
+      <div class="slot off">14:00</div><div class="slot off">14:30</div><div class="slot">16:00</div><div class="slot on">16:30</div>
+      <div class="slot">17:00</div><div class="slot">17:30</div><div class="slot off">18:00</div><div class="slot">18:30</div>
+    </div>
+    <div class="book"><div><div class="meta">Fan and switchboard repair · 60 min</div><div class="price disp">₹499</div></div><button class="btn btn-pri">Book 16:30</button></div>
+  </div></aside>
+</main>
+<section class="cats">
+  <div class="cat"><h4 class="disp">Cleaning</h4><p>from ₹399 · 42 pros</p></div>
+  <div class="cat"><h4 class="disp">Repair</h4><p>from ₹299 · 31 pros</p></div>
+  <div class="cat"><h4 class="disp">Salon</h4><p>from ₹599 · 27 pros</p></div>
+  <div class="cat"><h4 class="disp">Electrician</h4><p>from ₹249 · 38 pros</p></div>
+  <div class="cat"><h4 class="disp">Plumber</h4><p>from ₹249 · 24 pros</p></div>
+  <div class="cat"><h4 class="disp">Cooking</h4><p>from ₹699 · 18 pros</p></div>
+</section>
+</body></html>

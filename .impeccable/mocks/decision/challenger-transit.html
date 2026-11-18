@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Veny — Metro Line</title>
+<link href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--enamel:#0D1330;--enamel2:#151C42;--line:#26305E;--porc:#F5F3EE;--muted:#AEB3CF;--violet:#7552E0;--red:#E2483D;--amber:#F2B233;--green:#2E9E5B;--cobalt:#3D7BF2;--pink:#E06AA8}
+*{box-sizing:border-box;margin:0}
+body{width:1440px;height:900px;overflow:hidden;background:var(--enamel);color:var(--porc);font:400 15px/1.45 Overpass,sans-serif}
+header{height:72px;display:flex;align-items:center;gap:32px;padding:0 64px;border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:10px;font-size:28px;font-weight:800}
+.ring{width:26px;height:26px;border-radius:50%;border:6px solid var(--violet);background:var(--porc)}
+nav{display:flex;gap:26px;color:var(--muted)}
+.sp{flex:1}
+.btn{height:44px;padding:0 22px;border-radius:999px;border:0;font:700 15px Overpass;display:inline-flex;align-items:center}
+.pri{background:var(--violet);color:#fff}
+.ghost{background:none;color:var(--porc)}
+main{display:grid;grid-template-columns:1fr 1fr;gap:64px;padding:56px 64px 0}
+h1{font-size:64px;line-height:1.02;font-weight:800;letter-spacing:-.02em;max-width:12ch}
+.lede{margin-top:20px;color:var(--muted);font-size:18px;max-width:46ch}
+.search{margin-top:32px;display:flex;background:var(--porc);color:var(--enamel);border-radius:999px;padding:6px;max-width:600px}
+.search div{flex:1;padding:8px 20px;border-right:1px solid #d8d4ca}
+.search small{display:block;font-size:12px;color:#5b5f78;font-weight:600}
+.search b{font-size:17px}
+/* signature: booking drawn as a station diagram on the violet line */
+.card{background:var(--enamel2);border:1px solid var(--line);border-radius:18px;padding:32px}
+.card h3{font-size:24px;font-weight:700}
+.meta{color:var(--muted)}
+.route{position:relative;margin:36px 0 8px 12px}
+.track{position:absolute;left:11px;top:12px;bottom:12px;width:8px;background:var(--violet);border-radius:4px}
+.track i{position:absolute;left:0;right:0;bottom:0;top:52%;background:#3a3f68;border-radius:4px}
+.stn{position:relative;display:flex;align-items:center;gap:20px;height:64px}
+.stn b{width:30px;height:30px;border-radius:50%;background:var(--porc);border:7px solid var(--violet);flex:none}
+.stn.todo b{border-color:#5A6194}
+.stn.now b{width:34px;height:34px;margin-left:-2px;box-shadow:0 0 0 4px rgba(142,108,239,.35)}
+.stn span{font-size:19px;font-weight:700}
+.stn em{font-style:normal;color:var(--muted);font-size:14px;margin-left:auto}
+.lines{position:absolute;left:64px;right:64px;bottom:40px;display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.ln{padding:14px 16px;border-radius:12px;background:var(--enamel2);border:1px solid var(--line);display:flex;align-items:center;gap:12px;font-weight:700;font-size:17px}
+.ln i{width:28px;height:8px;border-radius:4px}
+</style></head><body>
+<header><div class="logo"><span class="ring"></span>Veny</div><nav><span>Services</span><span>My bookings</span><span>For pros</span></nav><span class="sp"></span><span class="meta">Saket, New Delhi</span><button class="btn ghost">Log in</button><button class="btn pri">Sign up</button></header>
+<main>
+  <section><h1>Verified pros, on time, every stop.</h1><p class="lede">The Elite Marketplace. Book a verified professional into a real free slot and follow the job from request to done.</p>
+    <div class="search"><div><small>Service</small><b>Plumber</b></div><div><small>When</small><b>Tomorrow morning</b></div><button class="btn pri">Find a pro</button></div></section>
+  <aside class="card"><h3>Leak repair with Anil Plumbing</h3><div class="meta">Thu 19 Nov · 10:00 · Booking VN-2390 · ₹349</div>
+    <div class="route"><div class="track"><i></i></div>
+      <div class="stn"><b></b><span>Requested</span><em>18 Nov, 11:02</em></div>
+      <div class="stn now"><b></b><span>Confirmed by Anil</span><em>18 Nov, 11:20</em></div>
+      <div class="stn todo"><b></b><span>Job started</span><em>Thu 10:00</em></div>
+      <div class="stn todo"><b></b><span>Completed and reviewed</span><em></em></div>
+    </div></aside>
+</main>
+<section class="lines">
+  <div class="ln"><i style="background:var(--violet)"></i>Cleaning</div><div class="ln"><i style="background:var(--red)"></i>Repair</div><div class="ln"><i style="background:var(--pink)"></i>Salon</div>
+  <div class="ln"><i style="background:var(--amber)"></i>Electrician</div><div class="ln"><i style="background:var(--cobalt)"></i>Plumber</div><div class="ln"><i style="background:var(--green)"></i>Cooking</div>
+</section>
+</body></html>

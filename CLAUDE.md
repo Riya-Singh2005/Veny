@@ -61,6 +61,13 @@ This repo holds the **new app** (repo root) and the **legacy MERN app** (`Client
 - Motion stays subtle (150–250 ms state transitions). No GSAP or scroll effects.
 - WCAG AA contrast. Mobile-first booking flow.
 - Design tokens live in `src/styles/globals.css`. Never use raw hex values in components.
+- **Direction: "Bombay Deco Nights"**, chosen by the owner on 2026-11-18. The source of truth is the repo-root `DESIGN.md`; the direction contract is `.impeccable/surfaces/src-app.md`; product truth is `PRODUCT.md`.
+  - Colour: ink-violet ground, brass hairline seams (no shadows), amethyst **only** for primary actions.
+  - Type: Bodoni Moda (display) with Manrope (UI, tabular numerals).
+  - The stepped `DecoFrame` is the signature. Use it at most once per page (slot picker or booking panel).
+  - Destructive buttons are outline-only and set apart from other actions.
+  - No eyebrow labels above headings, no side-stripe accents, no em dashes in UI copy.
+  - Live style guide: `/design`.
 
 ## Business rules (decided)
 - **PD-02:** vendors must be **verified by an admin** before their services are public or bookable.
@@ -80,5 +87,6 @@ This repo holds the **new app** (repo root) and the **legacy MERN app** (`Client
 ## Progress (keep updated)
 - ✅ Phase 1 DB (2026-11-17): schema, RLS, storage, admin RPCs. 92 pgTAP tests. Applied to staging.
 - ✅ M1 (2026-11-18): Vite app scaffold at the root, marketplace migration (verification, availability, slots, overlap, reject, cancel window, favorites). 132 pgTAP, 14 unit and 4 E2E tests. **Not yet pushed to staging.**
-- ⏭ M2 design system: the owner picks a visual direction. Then M3 auth, M4 customer, M5 vendor, M6 admin, M7 QA and deploy.
+- ✅ M2 (2026-11-19): Bombay Deco Nights design system, layouts, live home, previews at `/design*`. 17 unit and 20 E2E tests, including axe WCAG AA.
+- ⏭ M3 auth. Then M4 customer, M5 vendor, M6 admin, M7 QA and deploy.
 - Plan: `docs/planning/IMPLEMENTATION_PLAN.md` Part C. Decisions: `docs/planning/DECISIONS.md`.

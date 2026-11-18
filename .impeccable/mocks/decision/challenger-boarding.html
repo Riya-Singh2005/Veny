@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Veny — Boarding Pass</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,400..800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0D0F14;--ink2:#161922;--line:#262A35;--paper:#F4F2EE;--muted:#A9ADB8;--violet:#6E4FE0;--amber:#FFB020}
+*{box-sizing:border-box;margin:0}
+body{width:1440px;height:900px;overflow:hidden;background:var(--ink);color:var(--paper);font:400 15px/1.45 Archivo,sans-serif;font-variant-numeric:tabular-nums}
+.cond{font-stretch:75%;font-weight:800;text-transform:uppercase;letter-spacing:.01em}
+header{height:68px;display:flex;align-items:center;gap:32px;padding:0 56px;border-bottom:1px solid var(--line)}
+.logo{font-size:30px}
+nav{display:flex;gap:26px;color:var(--muted)}
+.sp{flex:1}
+.btn{height:42px;padding:0 20px;border-radius:6px;border:0;font:600 15px Archivo;display:inline-flex;align-items:center}
+.pri{background:var(--violet);color:#fff}
+.ghost{background:none;color:var(--paper)}
+.wrap{padding:44px 56px 0}
+h1{font-size:30px;font-weight:600}
+.sub{color:var(--muted);margin-top:4px}
+/* signature: the booking as a segmented pass */
+.pass{margin-top:24px;display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr 1.2fr;background:var(--paper);color:var(--ink);border-radius:14px;height:168px;overflow:hidden}
+.seg{padding:22px 24px;border-right:2px dashed #cfcac0;display:flex;flex-direction:column;justify-content:space-between}
+.seg:last-child{border-right:0;background:var(--violet);color:#fff}
+.seg small{font-size:12px;font-weight:700;color:#6b6a72;text-transform:uppercase;letter-spacing:.06em}
+.seg:last-child small{color:#e6deff}
+.big{font-size:44px;line-height:1}
+.mid{font-size:22px;font-weight:700}
+.status{display:inline-flex;align-items:center;gap:8px;font-weight:700}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--amber)}
+.board{margin-top:40px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.bh,.br{display:grid;grid-template-columns:110px 2fr 1.4fr 1fr 1fr 140px;align-items:center;padding:0 24px}
+.bh{height:44px;background:var(--ink2);color:var(--muted);font-size:13px;font-weight:600}
+.br{height:62px;border-top:1px solid var(--line);font-size:17px}
+.br .t{font-size:26px}
+.ok{color:#7ee0a8;font-weight:600}
+.chg{color:var(--amber);font-weight:700}
+.tools{display:flex;justify-content:space-between;align-items:end;margin-top:36px}
+.filters{display:flex;gap:8px}
+.chip{padding:8px 16px;border:1px solid var(--line);border-radius:6px;color:var(--muted)}
+.chip.on{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+</style></head><body>
+<header><div class="logo cond">Veny</div><nav><span>Services</span><span>My bookings</span><span>For pros</span></nav><span class="sp"></span><span class="sub">HSR Layout, Bengaluru</span><button class="btn ghost">Aarav S.</button></header>
+<div class="wrap">
+  <h1>Your next booking</h1><p class="sub">The Elite Marketplace · every pro verified by Veny</p>
+  <div class="pass">
+    <div class="seg"><small>Pro · verified</small><div class="big cond">Ravi Kumar</div><div>Fan and switchboard repair</div></div>
+    <div class="seg"><small>Date</small><div class="mid">Wed 18 Nov</div></div>
+    <div class="seg"><small>Slot</small><div class="big cond">16:30</div></div>
+    <div class="seg"><small>Status</small><span class="status"><span class="dot"></span>Awaiting pro</span></div>
+    <div class="seg"><small>Booking</small><div class="big cond">VN-2381</div><div>₹499 · pay on-site</div></div>
+  </div>
+  <div class="tools"><div><h1>Free today near you</h1><p class="sub">Ranked by next available time</p></div>
+    <div class="filters"><span class="chip on">All</span><span class="chip">Cleaning</span><span class="chip">Repair</span><span class="chip">Salon</span><span class="chip">Electrician</span><span class="chip">Plumber</span><span class="chip">Cooking</span></div></div>
+  <div class="board">
+    <div class="bh"><span>Next free</span><span>Pro</span><span>Service</span><span>Distance</span><span>Price</span><span>Status</span></div>
+    <div class="br"><span class="t cond">15:00</span><span>Meera Joshi</span><span>Salon at home</span><span>1.4 km</span><span>₹799</span><span class="ok">3 slots left</span></div>
+    <div class="br"><span class="t cond">15:30</span><span>Shine Home Services</span><span>Deep cleaning</span><span>2.8 km</span><span>₹2,499</span><span class="chg">1 slot left</span></div>
+    <div class="br"><span class="t cond">16:00</span><span>Anil Plumbing</span><span>Leak repair</span><span>0.9 km</span><span>₹349</span><span class="ok">5 slots left</span></div>
+  </div>
+</div>
+</body></html>

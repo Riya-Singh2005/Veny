@@ -2,34 +2,186 @@
 @import 'tw-animate-css';
 
 /*
- * Foundation tokens only. The premium design system (typography, palette, radii,
- * elevation) is defined in Milestone M2 once a visual direction is chosen.
+ * Veny design tokens: "Bombay Deco Nights" (M2, 2026-11-18).
+ * Dark-first. Ink-violet lacquer ground, brass hairline seams, amethyst for primary actions only,
+ * ivory text. Bodoni Moda (display) + Manrope (UI, tabular numerals).
+ * Components use semantic tokens only; never raw hex values.
  */
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
 
-@theme {
-  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+:root,
+[data-theme='dark'] {
+  color-scheme: dark;
+  --background: #0e0a18;
+  --surface: #161025;
+  --surface-raised: #1f1832;
+  --foreground: #f2ece1;
+  --muted-foreground: #b8afc4;
+  --subtle-foreground: #8e869b;
+  --border: #2a2140;
+  --brass: #c9a86a;
+  --brass-line: #5e4e33;
+  --primary: #7552e0;
+  --primary-hover: #6544cf;
+  --primary-foreground: #ffffff;
+  --primary-soft: #2a2140;
+  --ring: #a88cf5;
+  --success: #6cc0b2;
+  --success-soft: #16302d;
+  --warning: #e3b04b;
+  --warning-soft: #33280f;
+  --destructive: #e8796d;
+  --destructive-strong: #b9443a;
+  --destructive-soft: #3a1714;
+  --info: #a88cf5;
+  --info-soft: #251c3f;
+  --overlay: rgb(8 5 14 / 0.72);
 }
 
-:root {
-  --background: oklch(0.99 0 0);
-  --foreground: oklch(0.2 0 0);
-  --muted-foreground: oklch(0.5 0 0);
-  --border: oklch(0.92 0 0);
+[data-theme='light'] {
+  color-scheme: light;
+  --background: #f6f4f9;
+  --surface: #fdfcfe;
+  --surface-raised: #efebf5;
+  --foreground: #17121f;
+  --muted-foreground: #574f66;
+  --subtle-foreground: #6e6680;
+  --border: #e1dbea;
+  --brass: #7d5f27;
+  --brass-line: #cdb98f;
+  --primary: #6544cf;
+  --primary-hover: #5636bb;
+  --primary-foreground: #ffffff;
+  --primary-soft: #ebe5fb;
+  --ring: #6544cf;
+  --success: #1f6f63;
+  --success-soft: #dcefeb;
+  --warning: #8a5a00;
+  --warning-soft: #f7ebcf;
+  --destructive: #b3372c;
+  --destructive-strong: #b3372c;
+  --destructive-soft: #f8e1de;
+  --info: #5636bb;
+  --info-soft: #ebe5fb;
+  --overlay: rgb(23 18 31 / 0.5);
+}
+
+@theme {
+  --font-sans: 'Manrope Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Bodoni Moda Variable', 'Bodoni 72', Didot, serif;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  --ease-deco: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-slow: 250ms;
+
+  --text-display: 4.75rem;
+  --text-display--line-height: 1.04;
+  --text-display--letter-spacing: -0.02em;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
   --color-foreground: var(--foreground);
   --color-muted-foreground: var(--muted-foreground);
+  --color-subtle-foreground: var(--subtle-foreground);
   --color-border: var(--border);
+  --color-brass: var(--brass);
+  --color-brass-line: var(--brass-line);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-ring: var(--ring);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-destructive: var(--destructive);
+  --color-destructive-strong: var(--destructive-strong);
+  --color-destructive-soft: var(--destructive-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --color-overlay: var(--overlay);
 }
 
 @layer base {
   * {
     @apply border-border;
   }
+  html {
+    -webkit-text-size-adjust: 100%;
+    scrollbar-color: var(--brass-line) var(--background);
+  }
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background font-sans text-foreground antialiased;
+    font-feature-settings: 'tnum' 1, 'lnum' 1;
+    caret-color: var(--brass);
+  }
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+  a {
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /*
+   * Signature: the stepped Deco frame. Reserved for the booking panel / slot picker, at most once per page.
+   * Outer brass shell + inner core with the same stepped profile (concentric).
+   */
+  .deco-frame {
+    --step: 12px;
+    position: relative;
+    padding: 1.5px;
+    background: var(--brass);
+    clip-path: polygon(
+      calc(var(--step) * 2) 0,
+      calc(100% - var(--step) * 2) 0,
+      calc(100% - var(--step) * 2) var(--step),
+      calc(100% - var(--step)) var(--step),
+      calc(100% - var(--step)) calc(var(--step) * 2),
+      100% calc(var(--step) * 2),
+      100% 100%,
+      0 100%,
+      0 calc(var(--step) * 2),
+      var(--step) calc(var(--step) * 2),
+      var(--step) var(--step),
+      calc(var(--step) * 2) var(--step)
+    );
+  }
+  .deco-frame > .deco-core {
+    background: var(--surface);
+    clip-path: inherit;
+  }
+  .deco-mark {
+    clip-path: polygon(30% 0, 70% 0, 70% 15%, 85% 15%, 85% 30%, 100% 30%, 100% 100%, 0 100%, 0 30%, 15% 30%, 15% 15%, 30% 15%);
   }
 }

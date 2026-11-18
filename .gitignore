@@ -37,3 +37,7 @@ build/
 # Test artifacts (new app)
 playwright-report/
 test-results/
+
+# Impeccable dev artifacts (screenshots, local config)
+.impeccable/review/
+.impeccable/config.local.json

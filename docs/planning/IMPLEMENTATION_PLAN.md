@@ -195,7 +195,7 @@ Status legend: ✅ Completed · 🟡 In progress · ⬜ Planned · ⛔ Blocked �
 |---|---|---|
 | Phase 1 DB | Schema, RLS, storage, admin RPCs; 92 pgTAP tests; applied to staging | ✅ 2026-11-17 |
 | **M1 Foundation** | Vite + React + TS strict at the repo root; Tailwind 4, shadcn config, React Router 8, TanStack Query, RHF + Zod, supabase-js; env validation (rejects secret keys); `AppError` mapping; CI (`web.yml`); `CLAUDE.md`. Migrations `20261118000100`/`200` (verification, availability, slots, overlap, reject, cancel window, favorites, access RPC). **132 pgTAP, 14 unit, 4 E2E (desktop + mobile), all passing** | ✅ locally · ⬜ 🔐 staging push |
-| M2 Design system | Premium direction (owner picks one of 2 rendered directions); tokens; themed shadcn primitives; shared components; public and dashboard layouts; brand identity; axe tests | ⬜ |
+| M2 Design system | Owner chose *Bombay Deco Nights* (2026-11-18); tokens; themed primitives; shared components; public and dashboard layouts; live home; previews of service detail and vendor workspace; axe tests. The brandkit board is deferred (no image generation) | ✅ 2026-11-19 |
 | M3 Auth and roles | Sign-up (customer or vendor), login, confirm, resend, forgot and reset password, logout; `AuthProvider`; `RequireAuth` / `RequireRole` via `get_my_access` | ⬜ |
 | M4 Customer | Home, search and filters, nearby (GPS or manual, no fake coordinates), vendor and service detail with map, slot picker, booking, my bookings, cancel, reviews, favorites, addresses, notifications | ⬜ |
 | M5 Vendor | Dashboard, business profile, verification upload, services CRUD and images, availability and time off, booking inbox (Realtime), reviews | ⬜ |

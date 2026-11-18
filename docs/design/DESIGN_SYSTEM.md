@@ -1,4 +1,6 @@
-# Design System — PROPOSED
+# Design System: historical proposal
+
+> **Superseded on 2026-11-19.** The implemented system is *Bombay Deco Nights*. See the repo-root `DESIGN.md`, the tokens in `src/styles/globals.css` and the live style guide at `/design`. This file is kept as the original proposal.
 
 > **Status: proposal only. Nothing in this document is implemented.**
 > The current UI is documented in [UI_UX_AUDIT.md](UI_UX_AUDIT.md).
