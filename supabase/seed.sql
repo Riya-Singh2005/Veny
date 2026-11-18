@@ -53,6 +53,12 @@ update public.vendors set
   service_radius_m = 10000
 where profile_id = '44444444-4444-4444-8444-444444444444';
 
+-- Weekly availability (vendor A: Mon-Sat 09:00-19:00; vendor B: daily 10:00-20:00), vendor timezone Asia/Kolkata.
+insert into public.vendor_availability (vendor_id, weekday, start_time, end_time)
+select '33333333-3333-4333-8333-333333333333'::uuid, d, '09:00'::time, '19:00'::time from generate_series(1, 6) d
+union all
+select '44444444-4444-4444-8444-444444444444'::uuid, d, '10:00'::time, '20:00'::time from generate_series(0, 6) d;
+
 -- ---------------------------------------------------------------------------
 -- Addresses
 -- ---------------------------------------------------------------------------
@@ -121,8 +127,8 @@ values ('b0000004-0000-4000-8000-000000000004', '5e000002-0000-4000-8000-0000000
 
 insert into public.notifications (user_id, type, title, body, link, booking_id) values
   ('33333333-3333-4333-8333-333333333333', 'booking_new', 'New booking request',
-   'Booking VNY-PEND01 for "Fan and light installation".', '/dashboard/vendor/bookings/b0000001-0000-4000-8000-000000000001',
+   'Booking VNY-PEND01 for "Fan and light installation".', '/vendor/bookings/b0000001-0000-4000-8000-000000000001',
    'b0000001-0000-4000-8000-000000000001'),
   ('11111111-1111-4111-8111-111111111111', 'booking_confirmed', 'Booking confirmed',
-   'Your booking VNY-CONF02 for "Home wiring repair" is confirmed.', '/dashboard/customer/bookings/b0000002-0000-4000-8000-000000000002',
+   'Your booking VNY-CONF02 for "Home wiring repair" is confirmed.', '/account/bookings/b0000002-0000-4000-8000-000000000002',
    'b0000002-0000-4000-8000-000000000002');

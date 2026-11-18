@@ -4,10 +4,10 @@ name: Database
 
 on:
   pull_request:
-    paths: ["supabase/**", ".github/workflows/database.yml"]
+    paths: ["supabase/**", "src/types/database.types.ts", ".github/workflows/database.yml"]
   push:
     branches: [dev, prod]
-    paths: ["supabase/**", ".github/workflows/database.yml"]
+    paths: ["supabase/**", "src/types/database.types.ts", ".github/workflows/database.yml"]
 
 permissions:
   contents: read
@@ -38,4 +38,4 @@ jobs:
       - name: Generated types are up to date
         run: |
           supabase gen types typescript --local --schema public > "$RUNNER_TEMP/database.types.ts"
-          diff -u supabase/types/database.types.ts "$RUNNER_TEMP/database.types.ts"
+          diff -u src/types/database.types.ts "$RUNNER_TEMP/database.types.ts"

@@ -1,0 +1,32 @@
+# Frontend CI: typecheck, lint, unit tests, build. E2E runs locally against the Supabase stack (M7 adds it to CI).
+name: Web
+
+on:
+  pull_request:
+  push:
+    branches: [dev, prod]
+
+permissions:
+  contents: read
+
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      # Placeholder public values so env validation passes at build time; no real project is contacted.
+      VITE_SUPABASE_URL: http://127.0.0.1:55321
+      VITE_SUPABASE_PUBLISHABLE_KEY: sb_publishable_ci_placeholder_key
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build
+      - name: No secret keys in the bundle
+        run: "! grep -rE 'sb_secret_[A-Za-z0-9_-]{16,}' dist/"

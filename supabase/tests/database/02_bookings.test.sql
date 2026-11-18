@@ -13,8 +13,11 @@ insert into auth.users (id, email, raw_user_meta_data) values
   ('b0000000-0000-4000-8000-0000000000ad', 'bk.admin@test.local',  '{"full_name":"Admin"}');
 insert into public.admin_users (profile_id) values ('b0000000-0000-4000-8000-0000000000ad');
 update public.vendors
-   set base_location = extensions.st_setsrid(extensions.st_makepoint(77.39, 28.53), 4326)::extensions.geography
+   set base_location = extensions.st_setsrid(extensions.st_makepoint(77.39, 28.53), 4326)::extensions.geography,
+       status = 'verified', verified_at = now()
  where profile_id = 'b0000000-0000-4000-8000-0000000000f1';
+insert into public.vendor_availability (vendor_id, weekday, start_time, end_time)
+select 'b0000000-0000-4000-8000-0000000000f1', d, '08:00', '20:00' from generate_series(0, 6) d;
 
 insert into public.services (id, vendor_id, category_id, title, description, price_paise, is_active) values
   ('b0000000-0000-4000-8000-00000000005a', 'b0000000-0000-4000-8000-0000000000f1',
@@ -39,16 +42,16 @@ select set_config('request.jwt.claims', '{"sub":"b0000000-0000-4000-8000-0000000
 select throws_ok($$ select public.create_booking('b0000000-0000-4000-8000-00000000005a', now() + interval '10 minutes',
                                                  'b0000000-0000-4000-8000-0000000000a1') $$,
                  '22023', null, 'bookings must be at least 1 hour ahead');
-select throws_ok($$ select public.create_booking('b0000000-0000-4000-8000-00000000005a', now() + interval '2 days',
+select throws_ok($$ select public.create_booking('b0000000-0000-4000-8000-00000000005a', (current_date + 2 + time '10:00') at time zone 'Asia/Kolkata',
                                                  'b0000000-0000-4000-8000-0000000000a2') $$,
                  'P0002', null, 'cannot book with another user''s address (BUG-02)');
-select throws_ok($$ select public.create_booking('b0000000-0000-4000-8000-00000000005b', now() + interval '2 days',
+select throws_ok($$ select public.create_booking('b0000000-0000-4000-8000-00000000005b', (current_date + 2 + time '10:00') at time zone 'Asia/Kolkata',
                                                  'b0000000-0000-4000-8000-0000000000a1') $$,
                  'P0001', null, 'cannot book a paused service');
 
-insert into ids select 'b1', (public.create_booking('b0000000-0000-4000-8000-00000000005a', now() + interval '2 days',
+insert into ids select 'b1', (public.create_booking('b0000000-0000-4000-8000-00000000005a', (current_date + 2 + time '10:00') at time zone 'Asia/Kolkata',
                                                     'b0000000-0000-4000-8000-0000000000a1', '  Ring the bell  ')).id;
-insert into ids select 'b2', (public.create_booking('b0000000-0000-4000-8000-00000000005a', now() + interval '3 days',
+insert into ids select 'b2', (public.create_booking('b0000000-0000-4000-8000-00000000005a', (current_date + 3 + time '10:00') at time zone 'Asia/Kolkata',
                                                     'b0000000-0000-4000-8000-0000000000a1')).id;
 
 select is((select status::text from public.bookings where id = (select v from ids where k = 'b1')), 'pending',
@@ -68,7 +71,7 @@ select throws_ok(format('select public.transition_booking(%L, %L)', (select v fr
 
 -- vendor cannot book their own service
 select set_config('request.jwt.claims', '{"sub":"b0000000-0000-4000-8000-0000000000f1","role":"authenticated"}', true);
-select throws_ok($$ select public.create_booking('b0000000-0000-4000-8000-00000000005a', now() + interval '2 days',
+select throws_ok($$ select public.create_booking('b0000000-0000-4000-8000-00000000005a', (current_date + 2 + time '10:00') at time zone 'Asia/Kolkata',
                                                  'b0000000-0000-4000-8000-0000000000a3') $$,
                  'P0001', null, 'a vendor cannot book their own service');
 select is((select count(*) from public.notifications where type = 'booking_new'), 2::bigint,
@@ -146,7 +149,7 @@ select is((select changed_by from public.booking_status_history
 -- Admin cancels an in-progress booking (PD-13 b)
 set local role authenticated;
 select set_config('request.jwt.claims', '{"sub":"b0000000-0000-4000-8000-0000000000c2","role":"authenticated"}', true);
-insert into ids select 'b3', (public.create_booking('b0000000-0000-4000-8000-00000000005a', now() + interval '1 day',
+insert into ids select 'b3', (public.create_booking('b0000000-0000-4000-8000-00000000005a', (current_date + 1 + time '10:00') at time zone 'Asia/Kolkata',
                                                     'b0000000-0000-4000-8000-0000000000a2')).id;
 select set_config('request.jwt.claims', '{"sub":"b0000000-0000-4000-8000-0000000000f1","role":"authenticated"}', true);
 select lives_ok(format('select public.transition_booking(%L, %L)', (select v from ids where k = 'b3'), 'confirmed'), 'confirm b3');

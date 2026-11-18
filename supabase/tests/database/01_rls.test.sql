@@ -64,8 +64,12 @@ select ok(not exists (select 1 from public.admin_users where profile_id = 'a0000
 set local role anon;
 select set_config('request.jwt.claims', '{"role":"anon"}', true);
 
-select is((select count(*) from public.search_services(p_q => 'rlstest')), 2::bigint,
-          'anon search returns only active services');
+select is((select count(*) from public.search_services(p_q => 'rlstest')), 1::bigint,
+          'anon search returns only active services of verified vendors');
+select is((select count(*) from public.services where id = 'a0000000-0000-4000-8000-00000000005c'), 0::bigint,
+          'an unverified vendor''s service is hidden (PD-02)');
+select is((select count(*) from public.vendors where profile_id = 'a0000000-0000-4000-8000-0000000000f2'), 0::bigint,
+          'an unverified vendor profile is not public');
 select is((select count(*) from public.services where id = 'a0000000-0000-4000-8000-00000000005b'), 0::bigint,
           'anon cannot see a paused service');
 select throws_ok($$ select * from public.profiles $$, '42501', null, 'anon cannot read profiles');

@@ -4,6 +4,30 @@ This file follows the [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) f
 
 ## [Unreleased]
 
+### Added — 2026-11-18 (M1 foundation, React + Vite)
+- **Decision ADR-020:** React + Vite + React Router SPA replaces Next.js (ADR-002 superseded). Also decided: PD-02 (verification required), one booking at a time per vendor, a 2 h customer cancellation window, vendor reject, and the app at the repo root.
+- New app at the repo root:
+  - `package.json` replaces the stray axios-only root manifest, with exact-pinned dependencies;
+  - `vite.config.ts`, `tsconfig*.json` (strict), `eslint.config.js`, `playwright.config.ts`, `components.json`, `index.html`, `.env.example`;
+  - the folder tree from the brief.
+- `src/lib`:
+  - `env.ts`: Zod-validated; rejects `sb_secret_` keys;
+  - `supabase/client.ts`: typed, publishable key only;
+  - `errors.ts`: SQLSTATE/HINT → `AppError`;
+  - `utils`: `cn`, `formatPrice`.
+- App shell: providers (TanStack Query, sonner), router with an error/not-found route, and a temporary foundation page that reads categories through RLS.
+- Generated DB types moved to `src/types/database.types.ts`.
+- Migrations:
+  - `20261118000100_enum_values.sql`: `rejected` booking status and new notification types;
+  - `20261118000200_marketplace.sql`: verification, availability, time off, slots, overlap constraint, reject, cancel window, favorites, `get_my_access`, verified-only visibility.
+- Tests:
+  - `supabase/tests/database/03_marketplace.test.sql` is new; tests 01 and 02 are updated for the new rules. **132 pgTAP assertions pass.**
+  - 14 Vitest unit tests and 4 Playwright E2E tests (desktop + mobile) pass.
+- CI: `.github/workflows/web.yml` (typecheck, lint, test, build, secret scan of the bundle); the database workflow's types path is updated.
+- `CLAUDE.md` created.
+- Docs: DECISIONS, FRONTEND_ARCHITECTURE Part C, DATABASE_ARCHITECTURE §0 (additions and the future payments design), IMPLEMENTATION_PLAN Part C.
+- **Not done:** the new migrations aren't pushed to staging (🔐), and nothing is pushed to GitHub (🔐).
+
 ### Changed — 2026-11-17 (staging)
 - Git branches: `dev` (work, deploys to the **staging** Supabase project) and `prod` (created at `d6f8147`; it will deploy to a separate production project once that exists). `dev` is promoted to `prod` by a PR after testing. CI runs on both branches.
 - **Applied migrations `20261117000100`–`20261117000400` to the staging Supabase project** (`supabase db push`, approved by the product owner). The seed was not pushed.

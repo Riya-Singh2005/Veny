@@ -103,7 +103,7 @@ Conventions for execution:
 
 ---
 
-# Part B — Implementation backlog: Supabase + Next.js rebuild (CURRENT)
+# Part B — Implementation backlog: Supabase + Next.js rebuild (SUPERSEDED for frontend by Part C; its database items are done)
 
 > **Status: not started.** Part A above (the MERN backlog) is **superseded** and kept for reference only. Phase 0b and Phase 5 are not needed (PD-06: no production data).
 >
@@ -183,3 +183,25 @@ Conventions for execution:
 42. [ ] Launch: production Supabase and Vercel domain. 🔐 Take the old MERN deployment offline if that wasn't done in Phase 0.
 43. [ ] Hypercare for 14 days. 🔐 Decommission Render. 🔐 Archive the legacy `Client/` and `Server/` (tag first; no deletion without approval).
 44. [ ] ~~Cloudinary → Storage image job~~ is moot (PD-07). 🔐 Close the Cloudinary and EmailJS accounts once the old app is offline.
+
+
+---
+
+# Part C — Redevelopment plan: React + Vite + Supabase (CURRENT, 2026-11-18)
+
+Status legend: ✅ Completed · 🟡 In progress · ⬜ Planned · ⛔ Blocked · ❓ Requires verification. 🔐 means the owner must approve.
+
+| Milestone | Scope | Status |
+|---|---|---|
+| Phase 1 DB | Schema, RLS, storage, admin RPCs; 92 pgTAP tests; applied to staging | ✅ 2026-11-17 |
+| **M1 Foundation** | Vite + React + TS strict at the repo root; Tailwind 4, shadcn config, React Router 8, TanStack Query, RHF + Zod, supabase-js; env validation (rejects secret keys); `AppError` mapping; CI (`web.yml`); `CLAUDE.md`. Migrations `20261118000100`/`200` (verification, availability, slots, overlap, reject, cancel window, favorites, access RPC). **132 pgTAP, 14 unit, 4 E2E (desktop + mobile), all passing** | ✅ locally · ⬜ 🔐 staging push |
+| M2 Design system | Premium direction (owner picks one of 2 rendered directions); tokens; themed shadcn primitives; shared components; public and dashboard layouts; brand identity; axe tests | ⬜ |
+| M3 Auth and roles | Sign-up (customer or vendor), login, confirm, resend, forgot and reset password, logout; `AuthProvider`; `RequireAuth` / `RequireRole` via `get_my_access` | ⬜ |
+| M4 Customer | Home, search and filters, nearby (GPS or manual, no fake coordinates), vendor and service detail with map, slot picker, booking, my bookings, cancel, reviews, favorites, addresses, notifications | ⬜ |
+| M5 Vendor | Dashboard, business profile, verification upload, services CRUD and images, availability and time off, booking inbox (Realtime), reviews | ⬜ |
+| M6 Admin | Dashboard analytics, verification queue, vendors and customers, categories, moderation, bookings monitor, audit log; complaints scope ❓ (to ask) | ⬜ |
+| M7 QA and deploy | Full E2E journeys, responsive matrix, Lighthouse, RLS audit, security headers, Resend Edge Function (🔐 domain), production project and Vercel (🔐) | ⬜ |
+
+Known issues:
+- `npm audit` reports 12 dev-only "high" findings, all from one picomatch ReDoS (used by the Vite and Vitest glob tooling). No patched version exists yet. Production dependencies have 0 vulnerabilities. ❓ Recheck at M7.
+- The bundle is 680 kB before code-splitting. Route-level `lazy()` is planned from M3 onwards.

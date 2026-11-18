@@ -206,15 +206,18 @@ export type Database = {
           currency: string
           customer_id: string
           customer_notes: string | null
+          ends_at: string
           id: string
           price_paise: number
           reference: string
+          rejected_at: string | null
           scheduled_at: string
           service_id: string
           started_at: string | null
           status: Database["public"]["Enums"]["booking_status"]
           updated_at: string
           vendor_id: string
+          vendor_response: string | null
         }
         Insert: {
           address_location?: unknown
@@ -228,15 +231,18 @@ export type Database = {
           currency: string
           customer_id: string
           customer_notes?: string | null
+          ends_at: string
           id?: string
           price_paise: number
           reference: string
+          rejected_at?: string | null
           scheduled_at: string
           service_id: string
           started_at?: string | null
           status?: Database["public"]["Enums"]["booking_status"]
           updated_at?: string
           vendor_id: string
+          vendor_response?: string | null
         }
         Update: {
           address_location?: unknown
@@ -250,15 +256,18 @@ export type Database = {
           currency?: string
           customer_id?: string
           customer_notes?: string | null
+          ends_at?: string
           id?: string
           price_paise?: number
           reference?: string
+          rejected_at?: string | null
           scheduled_at?: string
           service_id?: string
           started_at?: string | null
           status?: Database["public"]["Enums"]["booking_status"]
           updated_at?: string
           vendor_id?: string
+          vendor_response?: string | null
         }
         Relationships: [
           {
@@ -317,6 +326,52 @@ export type Database = {
           sort_order?: number
         }
         Relationships: []
+      }
+      favorites: {
+        Row: {
+          created_at: string
+          id: string
+          profile_id: string
+          service_id: string | null
+          vendor_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          profile_id?: string
+          service_id?: string | null
+          vendor_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          profile_id?: string
+          service_id?: string | null
+          vendor_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "favorites_profile_id_fkey"
+            columns: ["profile_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "favorites_service_id_fkey"
+            columns: ["service_id"]
+            isOneToOne: false
+            referencedRelation: "services"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "favorites_vendor_id_fkey"
+            columns: ["vendor_id"]
+            isOneToOne: false
+            referencedRelation: "vendors"
+            referencedColumns: ["profile_id"]
+          },
+        ]
       }
       notifications: {
         Row: {
@@ -579,6 +634,124 @@ export type Database = {
           },
         ]
       }
+      vendor_availability: {
+        Row: {
+          created_at: string
+          end_time: string
+          id: string
+          start_time: string
+          vendor_id: string
+          weekday: number
+        }
+        Insert: {
+          created_at?: string
+          end_time: string
+          id?: string
+          start_time: string
+          vendor_id?: string
+          weekday: number
+        }
+        Update: {
+          created_at?: string
+          end_time?: string
+          id?: string
+          start_time?: string
+          vendor_id?: string
+          weekday?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "vendor_availability_vendor_id_fkey"
+            columns: ["vendor_id"]
+            isOneToOne: false
+            referencedRelation: "vendors"
+            referencedColumns: ["profile_id"]
+          },
+        ]
+      }
+      vendor_time_off: {
+        Row: {
+          created_at: string
+          id: string
+          period: unknown
+          reason: string | null
+          vendor_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          period: unknown
+          reason?: string | null
+          vendor_id?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          period?: unknown
+          reason?: string | null
+          vendor_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "vendor_time_off_vendor_id_fkey"
+            columns: ["vendor_id"]
+            isOneToOne: false
+            referencedRelation: "vendors"
+            referencedColumns: ["profile_id"]
+          },
+        ]
+      }
+      vendor_verifications: {
+        Row: {
+          document_paths: string[]
+          id: string
+          reviewed_at: string | null
+          reviewer_id: string | null
+          reviewer_notes: string | null
+          status: string
+          submitted_at: string
+          vendor_id: string
+          vendor_note: string | null
+        }
+        Insert: {
+          document_paths: string[]
+          id?: string
+          reviewed_at?: string | null
+          reviewer_id?: string | null
+          reviewer_notes?: string | null
+          status?: string
+          submitted_at?: string
+          vendor_id: string
+          vendor_note?: string | null
+        }
+        Update: {
+          document_paths?: string[]
+          id?: string
+          reviewed_at?: string | null
+          reviewer_id?: string | null
+          reviewer_notes?: string | null
+          status?: string
+          submitted_at?: string
+          vendor_id?: string
+          vendor_note?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "vendor_verifications_reviewer_id_fkey"
+            columns: ["reviewer_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "vendor_verifications_vendor_id_fkey"
+            columns: ["vendor_id"]
+            isOneToOne: false
+            referencedRelation: "vendors"
+            referencedColumns: ["profile_id"]
+          },
+        ]
+      }
       vendors: {
         Row: {
           base_location: unknown
@@ -590,6 +763,7 @@ export type Database = {
           service_radius_m: number
           slug: string
           status: Database["public"]["Enums"]["vendor_status"]
+          timezone: string
           updated_at: string
           verified_at: string | null
           whatsapp_e164: string | null
@@ -604,6 +778,7 @@ export type Database = {
           service_radius_m?: number
           slug: string
           status?: Database["public"]["Enums"]["vendor_status"]
+          timezone?: string
           updated_at?: string
           verified_at?: string | null
           whatsapp_e164?: string | null
@@ -618,6 +793,7 @@ export type Database = {
           service_radius_m?: number
           slug?: string
           status?: Database["public"]["Enums"]["vendor_status"]
+          timezone?: string
           updated_at?: string
           verified_at?: string | null
           whatsapp_e164?: string | null
@@ -637,6 +813,26 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      admin_review_verification: {
+        Args: { p_approve: boolean; p_note?: string; p_verification_id: string }
+        Returns: {
+          document_paths: string[]
+          id: string
+          reviewed_at: string | null
+          reviewer_id: string | null
+          reviewer_notes: string | null
+          status: string
+          submitted_at: string
+          vendor_id: string
+          vendor_note: string | null
+        }
+        SetofOptions: {
+          from: "*"
+          to: "vendor_verifications"
+          isOneToOne: true
+          isSetofReturn: false
+        }
+      }
       admin_set_review_hidden: {
         Args: { p_hidden: boolean; p_note?: string; p_review_id: string }
         Returns: undefined
@@ -672,15 +868,18 @@ export type Database = {
           currency: string
           customer_id: string
           customer_notes: string | null
+          ends_at: string
           id: string
           price_paise: number
           reference: string
+          rejected_at: string | null
           scheduled_at: string
           service_id: string
           started_at: string | null
           status: Database["public"]["Enums"]["booking_status"]
           updated_at: string
           vendor_id: string
+          vendor_response: string | null
         }
         SetofOptions: {
           from: "*"
@@ -711,6 +910,13 @@ export type Database = {
           isSetofReturn: false
         }
       }
+      get_available_slots: {
+        Args: { p_date: string; p_service_id: string }
+        Returns: {
+          slot_end: string
+          slot_start: string
+        }[]
+      }
       get_booking_contact: {
         Args: { p_booking_id: string }
         Returns: {
@@ -718,6 +924,16 @@ export type Database = {
           name: string
           phone_e164: string
           whatsapp_e164: string
+        }[]
+      }
+      get_my_access: {
+        Args: never
+        Returns: {
+          full_name: string
+          is_admin: boolean
+          role: Database["public"]["Enums"]["user_role"]
+          user_id: string
+          vendor_status: Database["public"]["Enums"]["vendor_status"]
         }[]
       }
       get_my_vendor: {
@@ -772,6 +988,26 @@ export type Database = {
         Args: { p_service_id: string }
         Returns: undefined
       }
+      submit_vendor_verification: {
+        Args: { p_document_paths: string[]; p_note?: string }
+        Returns: {
+          document_paths: string[]
+          id: string
+          reviewed_at: string | null
+          reviewer_id: string | null
+          reviewer_notes: string | null
+          status: string
+          submitted_at: string
+          vendor_id: string
+          vendor_note: string | null
+        }
+        SetofOptions: {
+          from: "*"
+          to: "vendor_verifications"
+          isOneToOne: true
+          isSetofReturn: false
+        }
+      }
       transition_booking: {
         Args: {
           p_booking_id: string
@@ -790,15 +1026,18 @@ export type Database = {
           currency: string
           customer_id: string
           customer_notes: string | null
+          ends_at: string
           id: string
           price_paise: number
           reference: string
+          rejected_at: string | null
           scheduled_at: string
           service_id: string
           started_at: string | null
           status: Database["public"]["Enums"]["booking_status"]
           updated_at: string
           vendor_id: string
+          vendor_response: string | null
         }
         SetofOptions: {
           from: "*"
@@ -811,6 +1050,7 @@ export type Database = {
     Enums: {
       booking_status:
         | "pending"
+        | "rejected"
         | "confirmed"
         | "in_progress"
         | "completed"
@@ -823,6 +1063,9 @@ export type Database = {
         | "booking_in_progress"
         | "booking_completed"
         | "review_new"
+        | "booking_rejected"
+        | "vendor_verified"
+        | "vendor_rejected"
       user_role: "customer" | "vendor"
       vendor_status: "unverified" | "pending" | "verified" | "suspended"
     }
@@ -954,6 +1197,7 @@ export const Constants = {
     Enums: {
       booking_status: [
         "pending",
+        "rejected",
         "confirmed",
         "in_progress",
         "completed",
@@ -967,6 +1211,9 @@ export const Constants = {
         "booking_in_progress",
         "booking_completed",
         "review_new",
+        "booking_rejected",
+        "vendor_verified",
+        "vendor_rejected",
       ],
       user_role: ["customer", "vendor"],
       vendor_status: ["unverified", "pending", "verified", "suspended"],

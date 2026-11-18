@@ -2,7 +2,8 @@
 
 > **Document structure (revised 2026-11-17)**
 > - **Part A: Current implementation (MERN, audited).** Unchanged from the initial audit.
-> - **Part B: Target frontend (Next.js App Router + TypeScript).** Supabase PostgreSQL is **Approved** (ADR-001). The rest of Part B was **Approved** on 2026-11-17 (ADR-002 to ADR-019).
+> - **Part C: Current target (2026-11-18): React + Vite SPA** (ADR-020). See the end of this file. **Part B (Next.js) is superseded** and kept for reference only.
+> - **Part B: Target frontend (Next.js App Router + TypeScript). SUPERSEDED by ADR-020.** Supabase PostgreSQL is **Approved** (ADR-001). The rest of Part B was **Approved** on 2026-11-17 (ADR-002 to ADR-019).
 >
 > Decision status is tracked in [../planning/DECISIONS.md](../planning/DECISIONS.md).
 
@@ -260,3 +261,40 @@ src/
 ## B8. What carries over from the current frontend
 - **Kept as product behaviour:** the browse → detail → book → status → review flow; the status colour semantics; empty states; the CSV export (re-implemented with proper escaping); Leaflet maps (react-leaflet, client-only via `dynamic(..., { ssr: false })`); lucide icons.
 - **Not carried over:** EmailJS, jwt-decode, localStorage auth, the axios client, Redux, and the undefined animation classes.
+
+
+---
+
+# Part C — Current target: React + Vite SPA (ADR-020, 2026-11-18)
+
+> **Status:** M1 foundation **completed** (scaffold, providers, router, Supabase client, error mapping, tests). Design system (M2) and features (M3–M6) are **planned**.
+
+## C1. Structure (repo root)
+```
+src/
+  app/        router/ (createBrowserRouter, RouteError) · providers/ (QueryClient, Toaster) · layouts/
+  components/ ui/ (shadcn primitives) · shared/ · forms/
+  features/   auth · customers · vendors · services · categories · bookings · reviews · notifications · favorites · admin
+              each: api.ts (TanStack Query hooks + keys), components/, pages/, schemas.ts (Zod)
+  lib/        supabase/client.ts (typed, publishable key) · errors.ts (AppError, unwrap) · env.ts (Zod-validated env) · utils/
+  hooks/ · types/database.types.ts (generated) · styles/globals.css (design tokens)
+tests/        unit/ (setup) · e2e/ (Playwright, desktop + mobile)
+```
+
+## C2. Data access rules
+- **Reads:** TanStack Query hooks per feature, calling `supabase.from(...)` (RLS applies) or RPCs (`search_services`, `get_available_slots`, `get_booking_contact`, `get_my_access`).
+- **Writes:** mutations call RPCs for business rules (`create_booking`, `transition_booking`, `create_review`, `submit_vendor_verification`, `admin_*`), or table writes limited by column grants (profile, services, addresses, availability, favorites). Each mutation invalidates the matching query keys.
+- **Errors:** `unwrap()` throws `AppError`. The UI shows `error.message`, because RPC messages are user-facing. The query client doesn't retry permanent errors.
+- **Realtime:** only for notifications and the vendor booking inbox.
+- **Route guards:** `get_my_access()` returns the role, admin flag and vendor status. Guards are UX only, because RLS enforces access.
+
+## C3. Planned routes
+| Area | Routes |
+|---|---|
+| Public | `/`, `/services`, `/services/:slug`, `/vendors/:slug`, `/categories/:slug` |
+| Auth | `/login`, `/signup` (customer or vendor), `/auth/confirm`, `/forgot-password`, `/reset-password` |
+| Customer | `/account` (overview), `/account/bookings`, `/account/bookings/:id`, `/account/favorites`, `/account/addresses`, `/account/profile` |
+| Vendor | `/vendor` (overview), `/vendor/bookings`, `/vendor/bookings/:id`, `/vendor/services`, `/vendor/availability`, `/vendor/reviews`, `/vendor/profile`, `/vendor/verification` |
+| Admin | `/admin`, `/admin/vendors`, `/admin/verifications`, `/admin/customers`, `/admin/categories`, `/admin/services`, `/admin/reviews`, `/admin/bookings`, `/admin/audit` |
+
+Notification links written by the database use these paths: `/account/bookings/:id`, `/vendor/bookings/:id`, `/vendor/reviews`, `/vendor/verification`.

@@ -35,7 +35,7 @@ All of these were approved by the product owner on 2026-11-17. ADR-019 is approv
 
 | ID | Decision | Rationale (summary) | Detail |
 |---|---|---|---|
-| ADR-002 | **Next.js (App Router) replaces the React + Vite SPA** | SEO for public service and category pages, server-side cookie auth, and no separate API host | `architecture/FRONTEND_ARCHITECTURE.md` Part B |
+| ADR-002 | ~~**Next.js (App Router) replaces the React + Vite SPA**~~ **Superseded by ADR-020 (2026-11-18)** | SEO for public service and category pages, server-side cookie auth, and no separate API host | `architecture/FRONTEND_ARCHITECTURE.md` Part B |
 | ADR-003 | **Retire the Express API.** Split its responsibilities between Postgres functions (RPC), Next.js Server Actions / Route Handlers and Supabase Edge Functions | Every current endpoint maps cleanly onto those three, and keeping Express would duplicate auth and add a host | `architecture/BACKEND_ARCHITECTURE.md` Part B |
 | ADR-004 | **TypeScript (strict) for all new code.** No incremental conversion of the old JS, which is being replaced | Contract bugs such as BUG-05 are type errors. Supabase can generate database types | `TECHNOLOGY_RECOMMENDATIONS.md` |
 | ADR-005 | **Supabase Auth** with server-side email confirmation and httpOnly cookie sessions via `@supabase/ssr`. The custom OTP code is **not** ported | Closes SEC-01, SEC-02, SEC-06 and SEC-08 by design | `architecture/RLS_AUTHORIZATION.md` §2 |
@@ -55,6 +55,17 @@ All of these were approved by the product owner on 2026-11-17. ADR-019 is approv
 | ADR-019 | **Migration cutover keeps the Cloudinary URLs** (`storage_provider = 'cloudinary'`). Copying to Supabase Storage is a later, separate job | Approved, but **has no effect** because PD-06 means there are no legacy images to keep. All images go to Supabase Storage, and Cloudinary isn't used | `MONGODB_TO_SUPABASE_MIGRATION.md` §6 |
 
 ---
+
+## Approved 2026-11-18 (product owner's redevelopment brief)
+
+| ID | Decision | Rationale and consequences | Where |
+|---|---|---|---|
+| ADR-020 | **React 19 + TypeScript + Vite + React Router SPA** (no Next.js), with Tailwind 4, shadcn/ui, TanStack Query, React Hook Form, Zod, React Leaflet, Recharts, Vitest and Playwright. Deployed on Vercel. **Supersedes ADR-002** | The owner's brief requires it. Consequences: there are no Server Actions. All data access goes through supabase-js under RLS and through RPCs; privileged work goes through Edge Functions. SEO for public pages relies on client rendering plus meta tags (prerendering can be added later). The env prefix becomes `VITE_` | `CLAUDE.md`, FRONTEND_ARCHITECTURE Part C |
+| PD-02 | **Vendor verification is required.** Services of unverified vendors are hidden and can't be booked | Trust before growth. Implemented with `vendor_verifications`, the `verification-docs` bucket, `submit_vendor_verification` and `admin_review_verification` | migration `20261118000200` |
+| BR-01 | **One booking at a time per vendor** | `bookings_no_overlap` exclusion constraint; slots from `get_available_slots()` | same |
+| BR-02 | **Customer cancellation:** `pending` any time; `confirmed` until **2 h** before the start | `private.customer_cancel_window()` | same |
+| BR-03 | **A vendor may reject** a pending booking, with an optional reason | New status `rejected`, plus `vendor_response` | same |
+| BR-04 | The new app lives at the **repo root**. The legacy `Client/` and `Server/` folders stay as reference | Supersedes the `apps/web/` part of PD-12 | root `package.json` |
 
 ## Resolved 2026-11-17
 
@@ -76,7 +87,6 @@ All of these were approved by the product owner on 2026-11-17. ADR-019 is approv
 
 | ID | Question | Options | Recommendation | Blocks |
 |---|---|---|---|---|
-| PD-02 | Is **vendor verification** required before a vendor's listings go public? | (a) required · (b) a badge only · (c) none | (b) at launch, (a) later | `vendor_verifications` table |
 | PD-08 | **Market scope**: India-only? | INR / +91 defaults vs multi-currency and region | India-first, with a `currency` column and E.164 phone numbers | Validation rules |
 | PD-09 | **Payments** | Out of scope / later | Out of scope for this rebuild | Booking schema extension |
 | PD-14 | **How is the first admin created?** | (a) a SQL migration that inserts a given email's profile into `admin_users` · (b) a one-off service-role script | (b) a one-off SQL run against the target project by the product owner, using an email that is never committed. Local dev already seeds `admin@veny.test` | First staging or production admin |
